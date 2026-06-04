@@ -9,6 +9,7 @@ engine = create_engine(
     pool_pre_ping=True,
     pool_size=5,
     max_overflow=10,
+    echo=False,
 )
 
 SessionLocal = sessionmaker(
