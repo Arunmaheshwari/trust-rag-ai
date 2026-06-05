@@ -30,6 +30,7 @@ class Settings(BaseSettings):
     # Bedrock
     # ----------------------------
     BEDROCK_MODEL_ID: str
+    BEDROCK_EMBEDDING_MODEL_ID: str
 
     model_config = SettingsConfigDict(
         env_file=".env",
