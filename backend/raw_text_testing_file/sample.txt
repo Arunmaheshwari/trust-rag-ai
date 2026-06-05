@@ -1,0 +1,20 @@
+TrustRAG AI is an enterprise-grade Retrieval Augmented Generation platform.
+
+The system combines multiple AI agents to improve the quality, reliability, and trustworthiness of LLM responses.
+
+Key capabilities include:
+
+1. Self-Healing RAG Pipeline
+A critic agent evaluates retrieved context and generated answers. If the answer quality is low, the system automatically retries retrieval and generation steps.
+
+2. LLM Guardrails Gateway
+All incoming prompts and outgoing responses pass through validation layers to detect prompt injection attacks, hallucinations, toxic content, and policy violations.
+
+3. Evaluation and Monitoring Pipeline
+The platform continuously evaluates retrieval quality, grounding, answer relevance, latency, and hallucination rates. Results are tracked for production observability and model monitoring.
+
+The platform uses Amazon Bedrock for large language models and embedding generation.
+
+Document ingestion supports PDF files, websites, and text files.
+
+Retrieved knowledge is indexed into a vector database and used to provide context-aware responses.

@@ -4,32 +4,32 @@ import numpy as np
 
 class FaissStore:
 
-    def __init__(
-        self,
-        dimension=1024
-    ):
-        self.index = faiss.IndexFlatL2(
-            dimension
-        )
+    def __init__(self, dimension=1024):
+        self.index = faiss.IndexFlatL2(dimension)
 
-    def add_vectors(
+        self.documents = []
+
+    def add_vector(
         self,
-        vectors
+        embedding,
+        text,
     ):
-        vectors = np.array(
-            vectors,
+        vector = np.array(
+            [embedding],
             dtype="float32"
         )
 
-        self.index.add(vectors)
+        self.index.add(vector)
+
+        self.documents.append(text)
 
     def search(
         self,
-        query_vector,
-        k=5
+        query_embedding,
+        k=5,
     ):
         query_vector = np.array(
-            [query_vector],
+            [query_embedding],
             dtype="float32"
         )
 
@@ -38,4 +38,14 @@ class FaissStore:
             k
         )
 
-        return indices[0]
+        results = []
+
+        for idx in indices[0]:
+
+            if idx < len(self.documents):
+
+                results.append(
+                    self.documents[idx]
+                )
+
+        return results

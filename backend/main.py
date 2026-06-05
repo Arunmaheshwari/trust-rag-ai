@@ -1,6 +1,6 @@
-def main():
-    print("Hello from backend!")
+from fastapi import FastAPI
+from api.routes.ingestion import router as ingestion_router
 
+app = FastAPI()
 
-if __name__ == "__main__":
-    main()
+app.include_router(ingestion_router, prefix="/api")
