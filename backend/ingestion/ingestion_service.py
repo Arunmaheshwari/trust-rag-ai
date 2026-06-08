@@ -92,16 +92,20 @@ class IngestionService:
             # Process Chunks
             # -------------------------
 
-            for chunk_doc in all_chunks:
+            chunk_texts = [
+                chunk["content"]
+                for chunk in all_chunks
+            ]
+            # Generate Embedding
+            embeddings = self.embedder.embed_documents(
+                chunk_texts
+            )
+
+            for chunk_doc, embedding in zip(all_chunks, embeddings):
 
                 chunk_text = chunk_doc["content"]
 
                 metadata = chunk_doc["metadata"]
-
-                # Generate Embedding
-                embedding = self.embedder.embed_query(
-                    chunk_text
-                )
 
                 # Store in Vector Store
                 self.vectorstore.add_vector(
