@@ -1,6 +1,5 @@
 from retrieval.embeddings import EmbeddingService
-from vectorstore.faiss_store import FaissStore
-
+from vectorstore.singleton import faiss_store
 
 class RetrievalService:
 
@@ -8,7 +7,7 @@ class RetrievalService:
 
         self.embedder = EmbeddingService()
 
-        self.vectorstore = FaissStore()
+        self.vectorstore = faiss_store
 
     def retrieve(
         self,

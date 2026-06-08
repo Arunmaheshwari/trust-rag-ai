@@ -5,7 +5,7 @@ from ingestion.loaders.web_loader import WebLoader
 from ingestion.chunker import DocumentChunker
 from retrieval.embeddings import EmbeddingService
 
-from vectorstore.faiss_store import FaissStore
+from vectorstore.singleton import faiss_store
 
 from database.connection import get_db
 from database.models.document import Document
@@ -18,7 +18,7 @@ class IngestionService:
 
     def __init__(self):
         self.embedder = EmbeddingService()
-        self.vectorstore = FaissStore()
+        self.vectorstore = faiss_store
         self.chunker = DocumentChunker()
 
     def get_loader(self, source_type: str):
