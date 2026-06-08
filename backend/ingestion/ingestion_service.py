@@ -126,6 +126,7 @@ class IngestionService:
                 db.add(db_document)
 
             db.commit()
+            self.vectorstore.save()
 
             return {
                 "message": "Ingestion successful",
